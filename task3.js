@@ -14,6 +14,12 @@ function lcm(a, b) {
 }
 
 const server = http.createServer((req, res) => {
+    const url = new URL(req.url, 'http://localhost');
+
+    if (!url.pathname.endsWith('/sunem_family_gmail_com')) {
+        res.end('Not found');
+        return;
+    }
     const params = new URL(req.url, 'http://localhost').searchParams;
     const x = parseInt(params.get('x'));
     const y = parseInt(params.get('y'));
